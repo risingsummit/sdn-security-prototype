@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Python SDN security automation prototype for rendering, applying, and auditing switch and router security configuration."
+    >
+    <title>SDN Security Automation Prototype</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header" aria-label="Primary">
+      <a class="brand" href="#top">SDN Security Prototype</a>
+      <nav class="nav-links" aria-label="Page sections">
+        <a href="#workflow">Workflow</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#demo">Demo</a>
+        <a href="https://github.com/risingsummit/sdn-security-prototype">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-label="Project introduction">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Python · SDN · Network Security Automation</p>
+          <h1>SDN Security Automation Prototype</h1>
+          <p class="hero-copy">
+            A controller-style project that turns centralized security intent into
+            device-specific configurations for switches and routers.
+          </p>
+          <div class="hero-actions" aria-label="Project links">
+            <a class="button primary" href="https://github.com/risingsummit/sdn-security-prototype">View Repository</a>
+            <a class="button secondary" href="#demo">See Commands</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="proof-strip" aria-label="Project metrics">
+        <div>
+          <strong>3</strong>
+          <span>network vendors</span>
+        </div>
+        <div>
+          <strong>zero-trust</strong>
+          <span>zone policy model</span>
+        </div>
+        <div>
+          <strong>audit</strong>
+          <span>configuration drift checks</span>
+        </div>
+        <div>
+          <strong>Python</strong>
+          <span>standard-library core</span>
+        </div>
+      </section>
+
+      <section class="section intro-band">
+        <div class="section-copy">
+          <p class="eyebrow">Why it matters</p>
+          <h2>Network security that can be rendered, tested, and repeated.</h2>
+        </div>
+        <p>
+          The prototype models a practical NetDevOps workflow: define policy once,
+          compile vendor-aware command sets, apply them through a controller layer,
+          and audit whether the intended baseline still matches device state.
+        </p>
+      </section>
+
+      <section class="section visual-section" id="workflow">
+        <div class="section-copy">
+          <p class="eyebrow">Architecture</p>
+          <h2>Central intent across mixed infrastructure.</h2>
+          <p>
+            The sample topology spans Cisco IOS, Arista EOS, and Juniper Junos.
+            Each device receives the same security intent in the syntax it expects.
+          </p>
+        </div>
+        <figure class="architecture-image">
+          <img src="assets/sdn-hero.png" alt="Diagram of the SDN security controller rendering policy to routers, switches, zones, and audit state.">
+        </figure>
+      </section>
+
+      <section class="section capabilities" id="capabilities">
+        <div class="section-heading">
+          <p class="eyebrow">Capabilities</p>
+          <h2>Built for security automation fundamentals.</h2>
+        </div>
+        <div class="capability-grid">
+          <article>
+            <h3>Management Plane</h3>
+            <p>SSH-only access, VTY restrictions, login banner, NTP, syslog, and SNMP contact baseline.</p>
+          </article>
+          <article>
+            <h3>Segmentation</h3>
+            <p>Named zones compile into VLANs, router subinterfaces, and zone-specific ACL attachment.</p>
+          </article>
+          <article>
+            <h3>Edge Hardening</h3>
+            <p>Access VLAN assignment, PortFast, BPDU guard, MAC limits, and port-security violation handling.</p>
+          </article>
+          <article>
+            <h3>Compliance Audit</h3>
+            <p>Rendered command fingerprints are compared with applied state to detect missing devices or drift.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section demo" id="demo">
+        <div class="section-copy">
+          <p class="eyebrow">CLI Demo</p>
+          <h2>Plan, apply, and audit from the command line.</h2>
+          <p>
+            The project ships with a sample campus inventory and a zero-trust
+            policy file, so the workflow is easy to run locally.
+          </p>
+        </div>
+        <div class="terminal" aria-label="Command examples">
+          <div class="terminal-bar">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <pre><code>python -m sdnsec.cli plan
+python -m sdnsec.cli apply
+python -m sdnsec.cli audit
+
+edge-rtr-01: compliant - Policy zero-trust-campus-baseline is applied.
+core-sw-01: compliant - Policy zero-trust-campus-baseline is applied.
+branch-sw-01: compliant - Policy zero-trust-campus-baseline is applied.</code></pre>
+        </div>
+      </section>
+
+      <section class="section repo-callout">
+        <div>
+          <p class="eyebrow">Open Source</p>
+          <h2>Explore the prototype on GitHub.</h2>
+          <p>
+            Review the controller, renderers, sample inventory, policy model, and
+            unit tests in the repository.
+          </p>
+        </div>
+        <a class="button primary" href="https://github.com/risingsummit/sdn-security-prototype">Open GitHub Repo</a>
+      </section>
+    </main>
+
+    <footer>
+      <span>SDN Security Automation Prototype</span>
+      <a href="https://github.com/risingsummit/sdn-security-prototype">github.com/risingsummit/sdn-security-prototype</a>
+    </footer>
+  </body>
+</html>
