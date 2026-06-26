@@ -1,0 +1,44 @@
+{
+  "name": "zero-trust-campus-baseline",
+  "banner": "Authorized access only. Activity is monitored.",
+  "admin_sources": ["10.10.0.0/24", "10.20.0.0/24"],
+  "syslog_servers": ["10.10.0.50"],
+  "ntp_servers": ["10.10.0.60", "10.10.0.61"],
+  "snmp_contact": "secops@example.local",
+  "access_port_shutdown": false,
+  "max_mac_addresses": 2,
+  "zones": [
+    {"name": "corp", "vlan": 20, "cidr": "10.20.20.0/24", "description": "Employee endpoints"},
+    {"name": "guest", "vlan": 30, "cidr": "10.20.30.0/24", "description": "Guest wireless"},
+    {"name": "iot", "vlan": 40, "cidr": "10.20.40.0/24", "description": "Building and lab devices"},
+    {"name": "security", "vlan": 50, "cidr": "10.20.50.0/24", "description": "SOC tools"}
+  ],
+  "acl_rules": [
+    {
+      "name": "corp_to_security_https",
+      "action": "permit",
+      "src_zone": "corp",
+      "dst_zone": "security",
+      "protocol": "tcp",
+      "dst_port": "443",
+      "reason": "Allow users to reach security portal"
+    },
+    {
+      "name": "iot_to_security_syslog",
+      "action": "permit",
+      "src_zone": "iot",
+      "dst_zone": "security",
+      "protocol": "udp",
+      "dst_port": "514",
+      "reason": "Allow IoT telemetry to SIEM"
+    },
+    {
+      "name": "guest_to_corp_block",
+      "action": "deny",
+      "src_zone": "guest",
+      "dst_zone": "corp",
+      "protocol": "ip",
+      "reason": "Prevent guest lateral movement"
+    }
+  ]
+}

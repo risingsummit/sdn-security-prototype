@@ -1,0 +1,38 @@
+{
+  "devices": [
+    {
+      "name": "edge-rtr-01",
+      "kind": "router",
+      "vendor": "cisco-ios",
+      "management_ip": "10.10.0.1",
+      "site": "hq",
+      "interfaces": [
+        {"name": "GigabitEthernet0/0", "role": "wan"},
+        {"name": "GigabitEthernet0/1", "role": "lan-trunk"}
+      ]
+    },
+    {
+      "name": "core-sw-01",
+      "kind": "switch",
+      "vendor": "arista-eos",
+      "management_ip": "10.10.0.11",
+      "site": "hq",
+      "interfaces": [
+        {"name": "Ethernet1", "role": "uplink"},
+        {"name": "Ethernet2", "role": "user-edge", "zone": "corp", "vlan": 20, "access": true},
+        {"name": "Ethernet3", "role": "iot-edge", "zone": "iot", "vlan": 40, "access": true}
+      ]
+    },
+    {
+      "name": "branch-sw-01",
+      "kind": "switch",
+      "vendor": "juniper-junos",
+      "management_ip": "10.20.0.11",
+      "site": "branch",
+      "interfaces": [
+        {"name": "ge-0/0/0", "role": "uplink"},
+        {"name": "ge-0/0/1", "role": "guest-edge", "zone": "guest", "vlan": 30, "access": true}
+      ]
+    }
+  ]
+}
